@@ -1,0 +1,15 @@
+<form (ngSubmit)="salvar()">   
+ 
+    <br/>
+    <h3>{{titulo}}</h3>
+ 
+    <input type="hidden" name="idtipo" size="10" [(ngModel)]="tipo.idtipo" disabled/>
+     
+    <label>Nome:
+        <input type="input" name="dsTipo" size="30" [(ngModel)]="tipo.dsTipo"/>
+    </label><br/><br/>
+ 
+    
+ 
+    <button type="submit">Salvar</button>
+</form>

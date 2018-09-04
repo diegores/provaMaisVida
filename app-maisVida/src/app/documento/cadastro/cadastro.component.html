@@ -1,0 +1,30 @@
+<form (ngSubmit)="salvar()">   
+ 
+    <br/>
+    <h3>{{titulo}}</h3>
+ 
+    <label>Código:
+        <input type="input" name="id" size="10" [(ngModel)]="documento.id" disabled/>
+    </label><br/><br/>
+ 
+    <label>Número:
+        <input type="input" name="numeroDocumento" size="30" [(ngModel)]="documento.numeroDocumento"/>
+    </label><br/><br/>
+
+    <label>Nome:
+        <input type="input" name="nome" size="30" [(ngModel)]="documento.nome"/>
+    </label><br/><br/>
+
+    <label>Descricao:
+        <input type="input" name="dsDocumento" size="30" [(ngModel)]="documento.dsDocumento"/>
+    </label><br/><br/>
+    
+    <label>Tipo de Documento:
+        <select name="tipo" id="singleSelect" ng-model="documento.idTipo" required="true">
+            <option value="">---Please select---</option> <!-- not selected / blank option -->
+            <option ng-repeat="tipo in documento.idTipo" value="{{tipo.idtipo}}">{{tipo.dsTipo}}</option>
+        </select><br>
+    </label>
+ 
+    <button type="submit">Salvar</button>
+</form>
