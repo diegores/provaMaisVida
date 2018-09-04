@@ -53,7 +53,7 @@ import {Response} from './../../../services/response';
       /*SE NÃO TIVER CÓDIGO VAMOS INSERIR UM NOVO REGISTRO */
       if(this.documento.id == undefined){
         
-        if(this.documento.idTipo != undefined){
+        if(this.validarCampos() == true){
             
           /*CHAMA O SERVIÇO PARA ADICIONAR UM NOVO DOCUMENTO */
           this.documentoService.addDocumento(this.documento).subscribe(response => {
@@ -79,8 +79,6 @@ import {Response} from './../../../services/response';
                EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */                 
               alert(erro);
           });
-        }else{
-          alert("Tipo do Documento é campo obrigatório!");
         }
       }
       else{
@@ -110,6 +108,24 @@ import {Response} from './../../../services/response';
        });
       }
  
+    }
+
+    private validarCampos():boolean{
+      var retorno = true;
+      if(this.documento.dsDocumento == undefined || this.documento.dsDocumento == ""){
+          alert("O campo que Descricação deve ser preenchido!");
+          retorno = false;
+      } else if(this.documento.nome == undefined || this.documento.nome == ""){
+          alert("O campo que nome deve ser preenchido!");
+          retorno = false;
+      }else if(this.documento.numeroDocumento == undefined){
+        alert("O campo que número do documento deve ser preenchido!");
+        retorno = false;
+      }else if(this.documento.idTipo != undefined){
+        alert("Tipo do Documento é campo obrigatório!");
+        retorno = false;
+      }
+      return retorno;
     }
  
   }
