@@ -1,0 +1,19 @@
+CREATE DATABASE prova;
+
+CREATE TABLE prova.tb_tipo
+(
+    id_tipo           INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    ds_tipo           VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE prova.tb_documento
+(
+    id_documento           INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    ds_nome                VARCHAR(100) NOT NULL,
+    ds_documento           VARCHAR(100) NOT NULL,
+    num_documento          VARCHAR(100) NOT NULL,
+    id_tipo	           INT NOT NULL,
+    constraint fk_tipo FOREIGN KEY (id_tipo)
+  REFERENCES prova.tb_tipo (id_tipo) 
+);
