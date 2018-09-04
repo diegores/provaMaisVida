@@ -45,32 +45,34 @@ import {Response} from './../../../services/response';
  
       /*SE NÃO TIVER CÓDIGO VAMOS INSERIR UM NOVO REGISTRO */
       if(this.tipo.idtipo == undefined){
- 
+          if(this.tipo.dsTipo != "" || this.tipo.dsTipo != undefined){
         /*CHAMA O SERVIÇO PARA ADICIONAR UM NOVO DOCUMENTO */
-        this.tipoService.addTipo(this.tipo).subscribe(response => {
- 
-           //PEGA O RESPONSE DO RETORNO DO SERVIÇO
-           let res:Response = <Response>response;
- 
-           /*SE RETORNOU 1 DEVEMOS MOSTRAR A MENSAGEM DE SUCESSO
-           E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
-           if(res.codigo == 1){
-            alert(res.mensagem);
-            this.tipo = new Tipo();
-           }
-           else{
-             /*
-             ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
-             NO SERVIDOR (CODIGO = 0)*/
-             alert(res.mensagem);
-           }
-         },
-         (erro) => {   
-           /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-             EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */                 
-            alert(erro);
-         });
- 
+          this.tipoService.addTipo(this.tipo).subscribe(response => {
+  
+            //PEGA O RESPONSE DO RETORNO DO SERVIÇO
+            let res:Response = <Response>response;
+  
+            /*SE RETORNOU 1 DEVEMOS MOSTRAR A MENSAGEM DE SUCESSO
+            E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
+            if(res.codigo == 1){
+              alert(res.mensagem);
+              this.tipo = new Tipo();
+            }
+            else{
+              /*
+              ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
+              NO SERVIDOR (CODIGO = 0)*/
+              alert(res.mensagem);
+            }
+          },
+          (erro) => {   
+            /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
+               EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */                 
+              alert(erro);
+          });
+        }else{
+          alert("Todos os campos são obrigatórios e devem ser preenchidos.")
+        }
       }
       else{
  
